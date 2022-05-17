@@ -6,11 +6,9 @@ function Score () {
         <div class="article">
             <table>
                     <tr>
-                        <td>Pontuação</td>
-                        <td>Tempo</td>
+                        <td id="pont">Pontuação</td>
                     </tr>
                     <tr>      
-        <td>(...)</td>
         <td>(...)</td>
         </tr>
         </table>

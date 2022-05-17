@@ -6,13 +6,19 @@
     flex: 8;
     padding-top: 50px;
     text-align: center;
+}
 
+#pont {
+  font-family: Verdana;
+  color: gray;
+  font-style: italic;
+  text-decoration: underline;
+  font-size: 18px;
 }
 
 table {
     min-width: 320px;
     border-collapse: collapse;
-   
 }
 
 table, th, td {
@@ -24,5 +30,4 @@ table, th, td {
   td {
     padding: 25px;
   }
-  
 }
