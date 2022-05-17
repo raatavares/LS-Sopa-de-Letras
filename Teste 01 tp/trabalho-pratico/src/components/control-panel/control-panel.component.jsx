@@ -2,10 +2,10 @@ import "./control-panel.css";
 
 function ControlPanel () {
     return (
-        <main class="main-content">
+        <main className="main-content">
 <section id="control-panel">
-<form class="form">
-<fieldset class="form-group left">
+<form className="form">
+<fieldset className="form-group left">
 <label for="btLevel">Dificuldade:</label>
 <br></br>
 <br></br>
@@ -16,9 +16,9 @@ function ControlPanel () {
 <option value="3">Avançado</option>
 </select>
 </fieldset>
-<button type="button" id="btPlay" class="right">Iniciar Jogo</button>
+<button type="button" id="btPlay" className="right">Iniciar Jogo</button>
 </form>
-<div class="form-metadata">
+<div className="form-metadata">
 </div>
 </section>
 </main>

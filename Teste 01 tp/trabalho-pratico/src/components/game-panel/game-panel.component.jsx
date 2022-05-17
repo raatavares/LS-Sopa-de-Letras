@@ -156,9 +156,6 @@ function GamePanel () {
 				<th width="30" height="30">S</th>
 			</tr>
 		</table>
-
-
-
 	</form>
     )
 

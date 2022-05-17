@@ -1,9 +1,23 @@
+import "./score.css"
+
 function Score () {
     return (
-        <div id="pontuacao">
-            <txt>Pontuação:</txt>
+        <article id="score">
+        <div class="article">
+            <table>
+                    <tr>
+                        <td>Score</td>
+                        <td>Time</td>
+                    </tr>
+                    <tr>      
+        <td>(...)</td>
+        <td>(...)</td>
+        </tr>
+        </table>
         </div>
+    </article> 
     )
 }
 
 export default Score;
+
