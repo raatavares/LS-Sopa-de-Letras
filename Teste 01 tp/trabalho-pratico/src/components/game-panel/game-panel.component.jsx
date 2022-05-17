@@ -1,6 +1,6 @@
 function GamePanel () {
     return (
-        <form id= "espacio">
+        <form>
 		<table className="table">
 			<tr>
 				<th width="30" height="30">R</th>
