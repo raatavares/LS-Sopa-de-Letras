@@ -1,0 +1,59 @@
+#control-panel {
+    box-shadow: 0px 0px 15px blue;
+    border-radius: 10px;
+    font-size: smaller;
+    color: grey;
+    padding: 15px 20px 10px 20px;
+    margin:  50px;
+    display:inline-block;
+  }
+  
+  #control-panel .form {
+    display: flex;
+    align-items: center;
+    gap: 100px;
+  }
+  
+  #control-panel .form,
+  #control-panel .form-metadata {
+    width: 100%;
+    padding: 10px 20px;
+  }
+  
+ 
+
+
+
+  
+  
+  
+  #control-panel .form-group {
+
+    border-radius: 10px;
+   
+    
+    
+    
+    
+  }
+ 
+  
+  
+  #btPlay {
+    border: 1px solid gray;
+    background-color: green;
+    color: white;
+    cursor: pointer;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.4);
+    
+  }
+
+
+  #btPlay:hover {
+    background: rgba(0, 0, 0, 0.1);
+    color: black;
+    border: 1px solid blue;
+    border-radius: 5px;
+  }
+
+  
