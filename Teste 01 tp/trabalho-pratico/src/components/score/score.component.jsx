@@ -2,7 +2,7 @@ import "./score.css"
 
 function Score () {
     return (
-        <article id="score">
+        <section id="score">
         <div class="article">
             <table>
                     <tr>
@@ -13,7 +13,7 @@ function Score () {
         </tr>
         </table>
         </div>
-    </article> 
+    </section> 
     )
 }
 

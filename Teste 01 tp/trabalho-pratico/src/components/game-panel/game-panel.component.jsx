@@ -157,6 +157,7 @@ function GamePanel () {
 			</tr>
 		</table>
 	</form>
+
     )
 
 }
