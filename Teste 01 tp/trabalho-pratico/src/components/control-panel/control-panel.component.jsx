@@ -10,13 +10,13 @@ function ControlPanel () {
 <br></br>
 <br></br>
 <select id="btLevel">
-<option selected value="0">Selecionar...</option>
+<option value="0">Selecionar...</option>
 <option value="1">Simples</option>
 <option value="2">Intermédio</option>
 <option value="3">Avançado</option>
 </select>
 </fieldset>
-<button type="button" id="btPlay" className="right">Iniciar Jogo</button>
+<button type="button" id="btPlay">Iniciar Jogo</button>
 </form>
 <div className="form-metadata">
 </div>
