@@ -17,14 +17,30 @@ function GamePanel () {
 	let table = document.createElement('table');
 
 	let tr = document.createElement('tr');
-	let th = document.createElement('th');
+	let td = document.createElement('td');
 	for(let i = 0; i < linhas; i++){
 		table.appendChild(tr);
 
 		for(let i = 0; i < colunas; i++) {
-			
+			tr.appendChild(td)
 		}
 	}
+
+	function MarcarPalavras (){
+		let mouseDown = 0;
+    	document.body.onmousedown = function () {
+      		++mouseDown;
+    	};
+    	document.body.onmouseup = function () {
+      		--mouseDown;
+    	};
+		if(mouseDown){
+			td.classList.add('marcado')
+		}
+		
+	
+	}
+
 
     return (
 		
