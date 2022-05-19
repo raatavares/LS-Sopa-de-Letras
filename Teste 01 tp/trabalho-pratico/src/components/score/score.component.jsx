@@ -8,11 +8,15 @@ function Score () {
                     <tr>
                         <td id="pont">Pontuação</td>
                     </tr>
+
                     <tr>      
-        <td>(...)</td>
-        </tr>
+                        <td>(...)</td>
+                    </tr>
+        
         </table>
+        
         </div>
+    
     </section> 
     )
 }
