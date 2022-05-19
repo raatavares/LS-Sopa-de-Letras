@@ -8,7 +8,7 @@ function letras (){
 } */
 
 function GamePanel () {
-	const level = btLevel.selectedIndex;
+	/* const level = btLevel.selectedIndex;
 	let linhas;
 	let colunas;
 	if(level === 1){linhas = 10; colunas = 10};
@@ -39,7 +39,7 @@ function GamePanel () {
 		}
 		
 	
-	}
+	} */
 
 
     return (
