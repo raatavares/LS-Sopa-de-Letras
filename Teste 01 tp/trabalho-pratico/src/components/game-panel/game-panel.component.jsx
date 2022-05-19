@@ -1,4 +1,31 @@
+const btLevel = document.querySelector('#btLevel');
+
+
+
+/* let palavras = ['TESTE', 'AULA', 'JAVA', 'DISCORD'];
+function letras (){
+	palavras.split 
+} */
+
 function GamePanel () {
+	const level = btLevel.selectedIndex;
+	let linhas;
+	let colunas;
+	if(level === 1){linhas = 10; colunas = 10};
+    if(level === 2){linhas = 15; colunas = 15};
+    if(level === 3){linhas = 20; colunas = 20};
+	let table = document.createElement('table');
+
+	let tr = document.createElement('tr');
+	let th = document.createElement('th');
+	for(let i = 0; i < linhas; i++){
+		table.appendChild(tr);
+
+		for(let i = 0; i < colunas; i++) {
+			
+		}
+	}
+
     return (
         <form>
 		<table className="table">
