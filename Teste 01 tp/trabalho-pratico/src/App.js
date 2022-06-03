@@ -2,7 +2,7 @@
 import Header from "./components/header/header.component"
 import ControlPanel from "./components/control-panel/control-panel.component"
 import GamePanel from "./components/game-panel/game-panel.component"
-import Score from "./components/score/score.component"
+import Display from "./components/display/display.component"
 import "./assets/styles/App.css";
 
 function App() {
@@ -13,7 +13,12 @@ function App() {
       <ControlPanel />
       </main>
       <GamePanel />
-      <Score />
+      <aside>
+        <div>
+        <Display text="Pontuação:" />
+        <Display text="Tempo:" />
+        </div>
+      </aside>
     </div>
   );
 }
