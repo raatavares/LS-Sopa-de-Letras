@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactDOM from 'react-dom/client';
 import { useState } from "react";
 import { useEffect } from "react";
 import Header from "./components/header/header.component"
@@ -16,6 +17,10 @@ function App() {
   const [seconds,setSeconds]=useState(0);
   const [minutes,setMinutes]=useState(3);
   const [maxMinutes,setMaxMinutes]=useState(10);
+
+  const [pontuacao,setPontuacao]=useState(0);
+
+  
   /**
   * When the game starts
   */
@@ -24,15 +29,16 @@ function App() {
       setGameStarted(false);
     } else {
       setGameStarted(true);
-  };
-}
+      setPontuacao(0);
+    };
+  }
 
 
   /**
    * When the user selects a new level,
    * this callback function is executed
    */
-   const handleLevelChange = (event) => {
+  const handleLevelChange = (event) => {
     const { value } = event.currentTarget;
     setSelectedLevel(value);
     switch (selectedLevel) {
@@ -63,27 +69,27 @@ function App() {
 
     
 
-    var timer;
-    useEffect(()=>{
-        timer = setInterval(()=>{
-            if(gameStarted === true){
-                setSeconds(seconds-1);
-                if(seconds===0){
-                    setMinutes(minutes-1);
-                    setSeconds(59);
-                }
-                if(seconds===0 && minutes===0){
-                    window.alert("GAME OVER!!!");
-                }
-            }else{
-              setMinutes(maxMinutes);
-              setSeconds(0);
-            }
-        },1000)
+  var timer;
+  useEffect(()=>{
+    timer = setInterval(()=>{
+      if(gameStarted === true){
+        setSeconds(seconds-1);
+        if(seconds===0){
+          setMinutes(minutes-1);
+          setSeconds(59);
+        }
+        if(seconds===0 && minutes===0){
+          window.alert("GAME OVER!!!");
+        }
+        }else{
+          setMinutes(maxMinutes);
+          setSeconds(0);
+        }
+      },1000)
 
     return ()=> clearInterval(timer);
 
-    });
+  });
 
   return (
     <div id="container">
@@ -98,8 +104,8 @@ function App() {
       </main>
       <GamePanel />
       <aside>
-        <div>
-          <Display text="Pontuação:" />
+        <div id="display">
+          <a>Pontuação: </a> <a>{pontuacao}</a>
         </div>
         <div id="display">
           <a>Tempo: </a> <a>{minutes}:{seconds}</a>
@@ -107,5 +113,7 @@ function App() {
       </aside>
     </div>
   );
+
 }
+
 export default App;

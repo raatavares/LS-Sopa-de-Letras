@@ -1,6 +1,9 @@
+import { useState } from "react";
+import { useEffect } from "react";
+import "./game-panel.css"
+import "./array-table.js"
+
 const btLevel = document.querySelector('#btLevel');
-
-
 
 /* let palavras = ['TESTE', 'AULA', 'JAVA', 'DISCORD'];
 function letras (){
@@ -25,7 +28,7 @@ function GamePanel () {
 			tr.appendChild(td)
 		}
 	}
-
+*/
 	function MarcarPalavras (){
 		let mouseDown = 0;
     	document.body.onmousedown = function () {
@@ -35,72 +38,84 @@ function GamePanel () {
       		--mouseDown;
     	};
 		if(mouseDown){
-			td.classList.add('marcado')
+			document.td.classList.add('marcado')
+		}
+	} 
+	
+	const [result,setResult]=useState('');
+
+	function makeid(length) {
+		var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+		var charactersLength = characters.length;
+		for ( var i = 0; i < length; i++ ) {
+		  	setResult(result + characters.charAt(Math.floor(Math.random() * 
+	 		charactersLength)));
+	   }
+	}
+
+	function changeStyle() {
+		if(document.getElementById("letra").style.backgroundColor === "orange"){
+			document.getElementById("letra").style.backgroundColor = "white";
+		}else{
+			document.getElementById("letra").style.backgroundColor = "orange";
 		}
 		
-	
-	} */
-
+	}
 
     return (
-		
 		<table id="table">
 			<tr>
-			    <td></td>
-                <td></td>
-                <td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
+			    <td id="letra" onClick={changeStyle}>Q</td>
+                <td>W</td>
+                <td>D</td>
+				<td>A</td>
+				<td>P</td>
+				<td>Y</td>
+				<td>T</td>
 			</tr>
 
 			<tr>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
+				<td>A</td>
+				<td>O</td>
+				<td>U</td>
+				<td>V</td>
+				<td>Z</td>
+				<td>X</td>
+				<td>F</td>
 			</tr>
 
 			<tr>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
+				<td>S</td>
+				<td>K</td>
+				<td>J</td>
+				<td>L</td>
+				<td>S</td>
+				<td>H</td>
+				<td>G</td>
 			</tr>
 
 			<tr>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
+				<td>D</td>
+				<td>A</td>
+				<td>N</td>
+				<td>L</td>
+				<td>Q</td>
+				<td>B</td>
+				<td>C</td>
 			</tr>
 
 			<tr>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
+				<td>U</td>
+				<td>T</td>
+				<td>I</td>
+				<td>M</td>
+				<td>J</td>
+				<td>E</td>
+				<td>P</td>
 			</tr>
 		</table>
 	)
 
 }
-
-
-
-
 
 export default GamePanel;

@@ -2,7 +2,7 @@ import React from "react";
 import "./control-panel.css";
 
 function ControlPanel (props) {
-    const { gameStarted, selectedLevel, onGameStart, onLevelChange, timer } = props;
+    const { gameStarted, selectedLevel, onGameStart, onLevelChange} = props;
     const gameStartedClass = gameStarted ? " gameStarted" : "";
     
 
