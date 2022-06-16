@@ -10,7 +10,8 @@ function letras (){
 	palavras.split 
 } */
 
-function GamePanel () {
+function GamePanel (props) {
+	const { selectedLevel, pontuacao} = props;
 	/* const level = btLevel.selectedIndex;
 	let linhas;
 	let colunas;
@@ -56,18 +57,47 @@ function GamePanel () {
 	const [palavra, setPalavra] = useState("");
 	const arrayOfObjects = [ "DADOS", "REACT" ];
 
+	const [dimensao, setDimensao] = useState(10);
+	const [numPalavras, setnumPalavras] = useState(5);
+
 	useEffect(()=>{
+
+		switch (selectedLevel) {
+			//level beginner
+			case '0':
+				setDimensao(10);
+				setnumPalavras(5);
+			    break;
+			//level Intermediate
+			case '1':
+				setDimensao(15);
+				setnumPalavras(7);
+			    break;
+			//level Advanced
+			case '2':
+				setDimensao(20);
+				setnumPalavras(10);
+			    break;
+			default:
+				setDimensao(10);
+				setnumPalavras(5);
+			    break;
+		  }
 		for(let node of document.querySelectorAll("td")) {
 			node.onclick = function () {
 				if(node.className === ""){
 					node.className = "selected";
 					setPalavra(palavra+node.textContent);
-					if(palavra === arrayOfObjects[0] || palavra === arrayOfObjects[1]){
-						window.alert("Acertou!");
+					let total = arrayOfObjects.length;
+					for(var i = 0; i < total; i++){
+						if(palavra === arrayOfObjects[i]){
+							window.alert("Acertou!");
+						}
 					}
 				}
 				else{
 					node.className="";
+					setPalavra("");
 				}
 			}
 

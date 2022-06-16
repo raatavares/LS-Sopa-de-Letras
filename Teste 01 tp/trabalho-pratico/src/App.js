@@ -19,7 +19,7 @@ function App() {
   const [maxMinutes,setMaxMinutes]=useState(10);
 
   const [pontuacao,setPontuacao]=useState(0);
-
+  const [isShown, setIsShown] = useState(false);
   
   /**
   * When the game starts
@@ -27,8 +27,10 @@ function App() {
    const handleGameStart = () => {
     if (gameStarted) {
       setGameStarted(false);
+      setIsShown(false);
     } else {
       setGameStarted(true);
+      setIsShown(true);
       setPontuacao(0);
     };
   }
@@ -102,7 +104,12 @@ function App() {
         onLevelChange={handleLevelChange}
       />
       </main>
-      <GamePanel />
+      {isShown && (
+      <GamePanel
+        selectedLevel={selectedLevel}
+        pontuacao={pontuacao}
+      />
+      )}
       <aside>
         <div id="display">
           <a>Pontuação: </a> <a>{pontuacao}</a>

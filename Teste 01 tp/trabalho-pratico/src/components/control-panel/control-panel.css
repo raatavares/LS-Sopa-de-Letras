@@ -21,7 +21,15 @@
   }
   
  
-
+  .game {
+    display: block;
+  }
+  
+  .hide-game {
+    opacity: 0;
+    pointer-events: none;
+    z-index: -1;
+  }
 
 
   

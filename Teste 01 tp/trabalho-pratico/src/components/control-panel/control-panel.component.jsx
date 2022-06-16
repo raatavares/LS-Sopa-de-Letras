@@ -1,4 +1,5 @@
 import React from "react";
+import GamePanel from "../game-panel/game-panel.component";
 import "./control-panel.css";
 
 function ControlPanel (props) {
