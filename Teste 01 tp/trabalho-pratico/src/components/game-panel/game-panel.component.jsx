@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useEffect } from "react";
 import "./game-panel.css"
-import "./array-table.js"
+import {randomLeter} from "./array-table.js"
 
 const btLevel = document.querySelector('#btLevel');
 
@@ -28,7 +28,7 @@ function GamePanel () {
 			tr.appendChild(td)
 		}
 	}
-*/
+
 	function MarcarPalavras (){
 		let mouseDown = 0;
     	document.body.onmousedown = function () {
@@ -41,17 +41,7 @@ function GamePanel () {
 			document.td.classList.add('marcado')
 		}
 	} 
-	
-	const [result,setResult]=useState('');
-
-	function makeid(length) {
-		var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-		var charactersLength = characters.length;
-		for ( var i = 0; i < length; i++ ) {
-		  	setResult(result + characters.charAt(Math.floor(Math.random() * 
-	 		charactersLength)));
-	   }
-	}
+*/	
 
 	/*function changeStyle(this) {
 		this.style.backgroundColor
@@ -63,6 +53,15 @@ function GamePanel () {
 		
 	}*/
 
+	useEffect(()=>{
+		for(let node of document.querySelectorAll("td")) {
+			if(node.textContent != "") continue;
+			let charcode = Math.round(65 + Math.random() * 25)
+			node.textContent = String.fromCharCode(charcode)
+		}
+	
+	});
+
 	const handleClick = (event, arg1) => {
 		if(document.getElementById(arg1).style.backgroundColor === "orange"){
 			document.getElementById(arg1).style.backgroundColor = "white";
@@ -73,55 +72,55 @@ function GamePanel () {
 	}
 
     return (
-		<table id="table">
+		<table id="table" onLoad={randomLeter}>
 			<tr>
-			    <td id="letra00" onClick={(event)=>handleClick(event,"letra00")}>Q</td>
-                <td id="letra01" onClick={(event)=>handleClick(event,"letra01")}>W</td>
+			    <td id="letra00" onClick={(event)=>handleClick(event,"letra00")}></td>
+                <td id="letra01" onClick={(event)=>handleClick(event,"letra01")}></td>
                 <td id="letra02" onClick={(event)=>handleClick(event,"letra02")}>D</td>
-				<td id="letra03" onClick={(event)=>handleClick(event,"letra03")}>A</td>
-				<td id="letra04" onClick={(event)=>handleClick(event,"letra04")}>P</td>
-				<td id="letra05" onClick={(event)=>handleClick(event,"letra05")}>Y</td>
-				<td id="letra06" onClick={(event)=>handleClick(event,"letra06")}>T</td>
+				<td id="letra03" onClick={(event)=>handleClick(event,"letra03")}></td>
+				<td id="letra04" onClick={(event)=>handleClick(event,"letra04")}></td>
+				<td id="letra05" onClick={(event)=>handleClick(event,"letra05")}></td>
+				<td id="letra06" onClick={(event)=>handleClick(event,"letra06")}></td>
 			</tr>
 
 			<tr>
+				<td id="letra"></td>
+				<td id="letra"></td>
 				<td id="letra">A</td>
-				<td id="letra">O</td>
-				<td id="letra">U</td>
-				<td id="letra">V</td>
-				<td id="letra">Z</td>
-				<td id="letra">X</td>
-				<td id="letra">F</td>
+				<td id="letra"></td>
+				<td id="letra"></td>
+				<td id="letra"></td>
+				<td id="letra"></td>
 			</tr>
 
 			<tr>
-				<td id="letra">S</td>
-				<td id="letra">K</td>
-				<td id="letra">J</td>
-				<td id="letra">L</td>
-				<td id="letra">S</td>
-				<td id="letra">H</td>
-				<td id="letra">G</td>
-			</tr>
-
-			<tr>
+				<td id="letra"></td>
+				<td id="letra"></td>
 				<td id="letra">D</td>
-				<td id="letra">A</td>
-				<td id="letra">N</td>
-				<td id="letra">L</td>
-				<td id="letra">Q</td>
-				<td id="letra">B</td>
-				<td id="letra">C</td>
+				<td id="letra"></td>
+				<td id="letra"></td>
+				<td id="letra"></td>
+				<td id="letra"></td>
 			</tr>
 
 			<tr>
-				<td id="letra">U</td>
-				<td id="letra">T</td>
-				<td id="letra">I</td>
-				<td id="letra">M</td>
-				<td id="letra">J</td>
-				<td id="letra">E</td>
-				<td id="letra">P</td>
+				<td id="letra"></td>
+				<td id="letra"></td>
+				<td id="letra">O</td>
+				<td id="letra"></td>
+				<td id="letra"></td>
+				<td id="letra"></td>
+				<td id="letra"></td>
+			</tr>
+
+			<tr>
+				<td id="letra"></td>
+				<td id="letra"></td>
+				<td id="letra">S</td>
+				<td id="letra"></td>
+				<td id="letra"></td>
+				<td id="letra"></td>
+				<td id="letra"></td>
 			</tr>
 		</table>
 	)
