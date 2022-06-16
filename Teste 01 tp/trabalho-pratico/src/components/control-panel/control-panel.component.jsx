@@ -2,8 +2,9 @@ import React from "react";
 import "./control-panel.css";
 
 function ControlPanel (props) {
-    const { gameStarted, selectedLevel, onGameStart, onLevelChange, /*timer*/ } =
-    props;
+    const { gameStarted, selectedLevel, onGameStart, onLevelChange, timer } = props;
+    const gameStartedClass = gameStarted ? " gameStarted" : "";
+    
 
     return (
         <main className="main-content">
@@ -30,11 +31,15 @@ function ControlPanel (props) {
                         id="btPlay"
                         disabled={selectedLevel === "0"}
                         onClick={onGameStart}
-                        >
+                    >
                         {gameStarted ? "Parar jogo" : "Iniciar Jogo"}
                     </button>
                 </form>
             <div className="form-metadata">
+            <dl className={`list-item left${gameStartedClass}`}>
+          <dt>Tempo de Jogo:</dt>
+          <dd id="gameTime">{timer}</dd>
+        </dl>
             </div>
         </section>
         </main>
@@ -43,5 +48,4 @@ function ControlPanel (props) {
 }
 
 
-//export default tempo;
 export default ControlPanel;
