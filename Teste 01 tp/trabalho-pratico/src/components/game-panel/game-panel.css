@@ -24,7 +24,9 @@ td{
      border-radius: 50%;
 }
 
-#table td.marcado{
+#table td.selected{
      background-color:orange;
+     border: solid 1px orange;
+     border-radius: 50%;
 }
 

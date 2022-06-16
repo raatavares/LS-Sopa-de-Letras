@@ -55,32 +55,32 @@ function GamePanel () {
 
 	useEffect(()=>{
 		for(let node of document.querySelectorAll("td")) {
-			if(node.textContent != "") continue;
+			node.onclick = function () {
+				if(node.className === ""){
+					node.className = "selected";
+				}
+				else{
+					node.className="";
+				}
+			}
+
+			if(node.textContent != "") 
+				continue;
 			let charcode = Math.round(65 + Math.random() * 25)
 			node.textContent = String.fromCharCode(charcode)
 		}
-	
 	});
-
-	const handleClick = (event, arg1) => {
-		if(document.getElementById(arg1).style.backgroundColor === "orange"){
-			document.getElementById(arg1).style.backgroundColor = "white";
-		}else{
-			document.getElementById(arg1).style.backgroundColor = "orange";
-		}
-		
-	}
 
     return (
 		<table id="table" onLoad={randomLeter}>
 			<tr>
-			    <td id="letra00" onClick={(event)=>handleClick(event,"letra00")}></td>
-                <td id="letra01" onClick={(event)=>handleClick(event,"letra01")}></td>
-                <td id="letra02" onClick={(event)=>handleClick(event,"letra02")}>D</td>
-				<td id="letra03" onClick={(event)=>handleClick(event,"letra03")}></td>
-				<td id="letra04" onClick={(event)=>handleClick(event,"letra04")}></td>
-				<td id="letra05" onClick={(event)=>handleClick(event,"letra05")}></td>
-				<td id="letra06" onClick={(event)=>handleClick(event,"letra06")}></td>
+			    <td id="letra"></td>
+                <td id="letra"></td>
+                <td id="letra">D</td>
+				<td id="letra"></td>
+				<td id="letra"></td>
+				<td id="letra"></td>
+				<td id="letra"></td>
 			</tr>
 
 			<tr>
