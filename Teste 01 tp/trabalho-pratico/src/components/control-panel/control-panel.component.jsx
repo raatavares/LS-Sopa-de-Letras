@@ -36,10 +36,6 @@ function ControlPanel (props) {
                     </button>
                 </form>
             <div className="form-metadata">
-            <dl className={`list-item left${gameStartedClass}`}>
-          <dt>Tempo de Jogo:</dt>
-          <dd id="gameTime">{timer}</dd>
-        </dl>
             </div>
         </section>
         </main>

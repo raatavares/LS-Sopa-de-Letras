@@ -13,7 +13,9 @@ function App() {
   const [gameStarted, setGameStarted] = useState(false);
   const [selectedLevel, setSelectedLevel] = useState("0");
 
-
+  const [seconds,setSeconds]=useState(0);
+  const [minutes,setMinutes]=useState(3);
+  const [maxMinutes,setMaxMinutes]=useState(10);
   /**
   * When the game starts
   */
@@ -22,8 +24,8 @@ function App() {
       setGameStarted(false);
     } else {
       setGameStarted(true);
-    }
   };
+}
 
 
   /**
@@ -33,29 +35,31 @@ function App() {
    const handleLevelChange = (event) => {
     const { value } = event.currentTarget;
     setSelectedLevel(value);
-    let minutes;
-    switch (new selectedLevel().getLevel()) {
+    switch (selectedLevel) {
       //level beginner
-      case 1:
-        minutes = 3;
+      case '0':
+        setMinutes(4);
+        setMaxMinutes(4);
         break;
       //level Intermediate
-      case '2':
-        minutes = 6;
+      case '1':
+        setMinutes(5);
+        setMaxMinutes(5);
         break;
       //level Advanced
-      case '3':
-        minutes = 10;
+      case '2':
+        setMinutes(6);
+        setMaxMinutes(6);
         break;
       default:
-        minutes = 0;
+        setMinutes(10);
+        setMaxMinutes(10);
         break;
     }
   }
 
 
-  const [seconds,setSeconds]=useState(0);
-const [minutes,setMinutes]=useState(3);
+
 
     
 
@@ -72,7 +76,7 @@ const [minutes,setMinutes]=useState(3);
                     window.alert("GAME OVER!!!");
                 }
             }else{
-              setMinutes(3);
+              setMinutes(maxMinutes);
               setSeconds(0);
             }
         },1000)
