@@ -53,11 +53,21 @@ function GamePanel () {
 	   }
 	}
 
-	function changeStyle() {
+	/*function changeStyle(this) {
+		this.style.backgroundColor
 		if(document.getElementById("letra").style.backgroundColor === "orange"){
 			document.getElementById("letra").style.backgroundColor = "white";
 		}else{
 			document.getElementById("letra").style.backgroundColor = "orange";
+		}
+		
+	}*/
+
+	const handleClick = (event, arg1) => {
+		if(document.getElementById(arg1).style.backgroundColor === "orange"){
+			document.getElementById(arg1).style.backgroundColor = "white";
+		}else{
+			document.getElementById(arg1).style.backgroundColor = "orange";
 		}
 		
 	}
@@ -65,53 +75,53 @@ function GamePanel () {
     return (
 		<table id="table">
 			<tr>
-			    <td id="letra" onClick={changeStyle}>Q</td>
-                <td>W</td>
-                <td>D</td>
-				<td>A</td>
-				<td>P</td>
-				<td>Y</td>
-				<td>T</td>
+			    <td id="letra00" onClick={(event)=>handleClick(event,"letra00")}>Q</td>
+                <td id="letra01" onClick={(event)=>handleClick(event,"letra01")}>W</td>
+                <td id="letra02" onClick={(event)=>handleClick(event,"letra02")}>D</td>
+				<td id="letra03" onClick={(event)=>handleClick(event,"letra03")}>A</td>
+				<td id="letra04" onClick={(event)=>handleClick(event,"letra04")}>P</td>
+				<td id="letra05" onClick={(event)=>handleClick(event,"letra05")}>Y</td>
+				<td id="letra06" onClick={(event)=>handleClick(event,"letra06")}>T</td>
 			</tr>
 
 			<tr>
-				<td>A</td>
-				<td>O</td>
-				<td>U</td>
-				<td>V</td>
-				<td>Z</td>
-				<td>X</td>
-				<td>F</td>
+				<td id="letra">A</td>
+				<td id="letra">O</td>
+				<td id="letra">U</td>
+				<td id="letra">V</td>
+				<td id="letra">Z</td>
+				<td id="letra">X</td>
+				<td id="letra">F</td>
 			</tr>
 
 			<tr>
-				<td>S</td>
-				<td>K</td>
-				<td>J</td>
-				<td>L</td>
-				<td>S</td>
-				<td>H</td>
-				<td>G</td>
+				<td id="letra">S</td>
+				<td id="letra">K</td>
+				<td id="letra">J</td>
+				<td id="letra">L</td>
+				<td id="letra">S</td>
+				<td id="letra">H</td>
+				<td id="letra">G</td>
 			</tr>
 
 			<tr>
-				<td>D</td>
-				<td>A</td>
-				<td>N</td>
-				<td>L</td>
-				<td>Q</td>
-				<td>B</td>
-				<td>C</td>
+				<td id="letra">D</td>
+				<td id="letra">A</td>
+				<td id="letra">N</td>
+				<td id="letra">L</td>
+				<td id="letra">Q</td>
+				<td id="letra">B</td>
+				<td id="letra">C</td>
 			</tr>
 
 			<tr>
-				<td>U</td>
-				<td>T</td>
-				<td>I</td>
-				<td>M</td>
-				<td>J</td>
-				<td>E</td>
-				<td>P</td>
+				<td id="letra">U</td>
+				<td id="letra">T</td>
+				<td id="letra">I</td>
+				<td id="letra">M</td>
+				<td id="letra">J</td>
+				<td id="letra">E</td>
+				<td id="letra">P</td>
 			</tr>
 		</table>
 	)
