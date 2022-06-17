@@ -18,7 +18,7 @@ function App() {
   const [minutes,setMinutes]=useState(3);
   const [maxMinutes,setMaxMinutes]=useState(10);
 
-  const [pontuacao,setPontuacao]=useState(0);
+  
   const [isShown, setIsShown] = useState(false);
   
   /**
@@ -31,7 +31,6 @@ function App() {
     } else {
       setGameStarted(true);
       setIsShown(true);
-      setPontuacao(0);
     };
   }
 
@@ -107,13 +106,11 @@ function App() {
       {isShown && (
       <GamePanel
         selectedLevel={selectedLevel}
-        pontuacao={pontuacao}
+        minutes={minutes}
+        seconds={seconds}
       />
       )}
       <aside>
-        <div id="display">
-          <a>Pontuação: </a> <a>{pontuacao}</a>
-        </div>
         <div id="display">
           <a>Tempo: </a> <a>{minutes}:{seconds}</a>
         </div>

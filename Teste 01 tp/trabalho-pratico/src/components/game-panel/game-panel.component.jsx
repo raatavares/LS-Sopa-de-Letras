@@ -11,7 +11,7 @@ function letras (){
 } */
 
 function GamePanel (props) {
-	const { selectedLevel, pontuacao} = props;
+	const {selectedLevel, minutes, seconds} = props;
 	/* const level = btLevel.selectedIndex;
 	let linhas;
 	let colunas;
@@ -53,7 +53,7 @@ function GamePanel (props) {
 		}
 		
 	}*/
-
+	const [pontuacao,setPontuacao]=useState(0);
 	const [palavra, setPalavra] = useState("");
 	const arrayOfObjects = [ "DADOS", "REACT" ];
 
@@ -91,7 +91,8 @@ function GamePanel (props) {
 					let total = arrayOfObjects.length;
 					for(var i = 0; i < total; i++){
 						if(palavra === arrayOfObjects[i]){
-							window.alert("Acertou!");
+							window.alert("ACERTOU!");
+							setPontuacao(pontuacao+1*minutes*60+seconds);
 						}
 					}
 				}
@@ -109,6 +110,7 @@ function GamePanel (props) {
 	});
 
     return (
+		<div>
 		<table id="table">
 			<tr>
 			    <td id="letra"></td>
@@ -235,6 +237,10 @@ function GamePanel (props) {
 				<td id="letra"></td>
 			</tr>
 		</table>
+        <div id="display">
+          <a>Pontuação: </a> <a>{pontuacao}</a>
+        </div>
+		</div>
 	)
 
 }
