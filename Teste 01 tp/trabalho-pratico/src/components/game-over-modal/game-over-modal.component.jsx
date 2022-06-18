@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import "./game-over-modal.css";
 
 function GameOverModal(props) {
-  const {isOpen, pontuacao, handleClose} = props;
+  const {isOpen, pontuacao, handleClose, minutes, seconds} = props;
 
   const modalClass = `w3-modal ${isOpen ? "show-modal" : ""}`;
   const [inputNomeText, setInputNomeText] = useState("");
@@ -21,6 +21,9 @@ function GameOverModal(props) {
         </header>
         <div className="info" id="pontuacao">
           <p>Pontuação: {pontuacao}</p>
+        </div>
+        <div className="info" id="pontuacao">
+          <a>Tempo: </a> <a>{minutes}:{seconds}</a>
         </div>
         {
           <div className="info" id="nome">

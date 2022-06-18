@@ -18,6 +18,9 @@ function GamePanel (props) {
 	const [isShownAvancado, setIsShownAvancado] = useState(false);
 
 	useEffect(()=>{
+		setIsShownAvancado(false);
+		setIsShownSimples(false);
+		setIsShownIntermedio(false);
 		switch (selectedLevel) {
 			//level beginner
 			case '1':
@@ -36,11 +39,11 @@ function GamePanel (props) {
 			node.onclick = function () {
 				if(node.className === "" || node.className === "certa"){
 					node.className = "selected"; 
-					setPalavra(palavra+node.textContent);
+					setPalavra(palavra+node.textContent,()=> {console.log(palavra)});
 					let total = arrayOfObjects.length;
 					for(var i = 0; i < total; i++){
 						if(palavra === arrayOfObjects[i]){
-							window.alert("ACERTOU!");
+							window.alert("Faltam " + (numPalavras-palavrasCertas) + " palavras!");
 							updatePontuacao(true);
 							setPalavrasCertas(palavrasCertas+1);
 							if(palavrasCertas === numPalavras)

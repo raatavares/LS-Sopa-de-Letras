@@ -26,6 +26,9 @@ function App() {
 
 	const handleCloseModal = () => {
 		setIsModalOpen(!isModalOpen);
+    setMinutes(maxMinutes);
+    setSeconds(0);
+    setGameStarted(false);
 	}
 
   const updatePontuacao = (operacaoSoma = true) => {
@@ -39,7 +42,7 @@ function App() {
   }
 
   const updateFinalJogo = (operacao = true) => {
-    setIsModalOpen(true);    
+    setIsModalOpen(true);
   }
 
   const [dimensao, setDimensao] = useState(10);
@@ -107,6 +110,7 @@ function App() {
 
   var timer;
   useEffect(()=>{
+    if(isModalOpen === false){
     timer = setInterval(()=>{
       if(gameStarted === true){
         setSeconds(seconds-1);
@@ -125,7 +129,7 @@ function App() {
       },1000)
 
     return ()=> clearInterval(timer);
-
+    }
   });
 
   return (
@@ -134,6 +138,8 @@ function App() {
         isOpen = {isModalOpen}
         pontuacao = {pontuacao}
         handleClose = {handleCloseModal}
+        minutes = {minutes}
+        seconds = {seconds}
       />
       <Header />
       <main className="main-content">
