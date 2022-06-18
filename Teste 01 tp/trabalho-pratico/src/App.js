@@ -5,6 +5,7 @@ import { useEffect } from "react";
 import Header from "./components/header/header.component"
 import ControlPanel from "./components/control-panel/control-panel.component"
 import GamePanel from "./components/game-panel/game-panel.component"
+import GameOverModal from "./components/game-over-modal/game-over-modal.component"
 import Display from "./components/display/display.component"
 import "./assets/styles/App.css";
 
@@ -17,10 +18,35 @@ function App() {
   const [seconds,setSeconds]=useState(0);
   const [minutes,setMinutes]=useState(3);
   const [maxMinutes,setMaxMinutes]=useState(10);
-
+  const [pontuacao,setPontuacao]=useState(0);
   
   const [isShown, setIsShown] = useState(false);
   
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+	const handleCloseModal = () => {
+		setIsModalOpen(!isModalOpen);
+	}
+
+  const updatePontuacao = (operacaoSoma = true) => {
+    let pointsSum = pontuacao;
+    if (operacaoSoma) {
+      pointsSum += 1*minutes*60+seconds;
+    } else {
+      pointsSum < 5 ? (pointsSum = 0) : (pointsSum -= 5);
+    }
+    setPontuacao(pointsSum);
+  }
+
+  const updateFinalJogo = (operacao = true) => {
+    setIsModalOpen(true);    
+  }
+
+  const [dimensao, setDimensao] = useState(10);
+	const [numPalavras, setnumPalavras] = useState(5);
+
+  
+
   /**
   * When the game starts
   */
@@ -28,12 +54,13 @@ function App() {
     if (gameStarted) {
       setGameStarted(false);
       setIsShown(false);
+      setIsModalOpen(true);
     } else {
       setGameStarted(true);
+      setPontuacao(0);
       setIsShown(true);
     };
   }
-
 
   /**
    * When the user selects a new level,
@@ -47,20 +74,28 @@ function App() {
       case '0':
         setMinutes(4);
         setMaxMinutes(4);
+        setDimensao(10);
+        setnumPalavras(5);
         break;
       //level Intermediate
       case '1':
         setMinutes(5);
         setMaxMinutes(5);
+        setDimensao(15);
+        setnumPalavras(7);
         break;
       //level Advanced
       case '2':
         setMinutes(6);
         setMaxMinutes(6);
+        setDimensao(20);
+        setnumPalavras(10);
         break;
       default:
         setMinutes(10);
         setMaxMinutes(10);
+        setDimensao(10);
+        setnumPalavras(5);
         break;
     }
   }
@@ -80,6 +115,7 @@ function App() {
           setSeconds(59);
         }
         if(seconds===0 && minutes===0){
+          updateFinalJogo(true);
           window.alert("GAME OVER!!!");
         }
         }else{
@@ -94,6 +130,11 @@ function App() {
 
   return (
     <div id="container">
+      <GameOverModal 
+        isOpen = {isModalOpen}
+        pontuacao = {pontuacao}
+        handleClose = {handleCloseModal}
+      />
       <Header />
       <main className="main-content">
       <ControlPanel 
@@ -106,15 +147,24 @@ function App() {
       {isShown && (
       <GamePanel
         selectedLevel={selectedLevel}
-        minutes={minutes}
-        seconds={seconds}
+        updatePontuacao={updatePontuacao}
+        updateFinalJogo={updateFinalJogo}
+        numPalavras={numPalavras}
+        dimensao={dimensao}
       />
       )}
-      <aside>
+      <div id="display">
+          <a>Pontuação: </a> <a>{pontuacao}</a>
+        </div>
         <div id="display">
           <a>Tempo: </a> <a>{minutes}:{seconds}</a>
         </div>
-      </aside>
+      <input
+        type="text"
+        id="inputNome"
+        size="17"
+        placeholder="Introduza uma palavra"
+      />
     </div>
   );
 

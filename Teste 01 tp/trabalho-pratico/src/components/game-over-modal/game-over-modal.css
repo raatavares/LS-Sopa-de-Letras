@@ -1,0 +1,96 @@
+.show-modal {
+  display: block !important;
+}
+
+[id^="modal-"] .info div {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  text-align: center;
+  justify-content: center;
+  font-size: smaller;
+}
+
+
+[id^="modal-"] .info div p {
+  text-align: left;
+  border-right: rgb(155, 149, 149) 1px solid;
+}
+
+[id^="modal-"] header{
+  text-align: center;
+  color: white;
+}
+
+[id^="modal-"] header {
+  font-weight: bold;
+  padding: 8px;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+}
+
+[id^="modal-"] header span {
+  font-size: smaller;
+  border-top-right-radius: 6px;
+  padding: 9px;
+}
+
+[id^="modal-"] .estilos {
+  box-shadow: 0px 10px 50px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  max-width: 350px;
+}
+
+[id^="modal-"] input {
+  padding: 2px 3px;
+  border-radius: 5px;
+  background-color: #e9e7e7;
+  width: 150px;
+  font-weight: lighter;
+}
+
+[id^="modal-"] button {
+  padding: 0px 5px;
+  border-radius: 5px;
+  margin-bottom: 5px;
+}
+
+#modal-top10 header{
+  background-color: rgb(60, 124, 243);
+}
+
+#modal-top10 .estilos {
+  border: 3px solid rgb(60, 124, 243);
+  background-color: rgb(60, 124, 243);
+}
+
+#modal-gameOver header{
+  background-color: rgb(60, 124, 243);
+}
+
+#modal-gameOver .estilos {
+  border: 3px solid rgb(60, 124, 243);
+  background-color: rgb(60, 124, 243);
+}
+
+#modal-gameOver .estilos .info {
+  background-color: white;
+}
+
+#modal-gameOver .info {
+  padding: 10px;
+  text-align: center;
+  font-weight: bolder;
+  background-color: white;
+}
+
+#modal-gameOver #nome {
+  font-weight: lighter;
+  font-size: smaller;
+}
+
+#footer{
+  color: white;
+  background-color: rgb(60, 124, 243);
+  text-align: center;
+  font-size: xx-small;
+}

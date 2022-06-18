@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { useEffect } from "react";
 import "./game-panel.css"
 import {randomLeter} from "./array-table.js"
@@ -11,7 +11,7 @@ function letras (){
 } */
 
 function GamePanel (props) {
-	const {selectedLevel, minutes, seconds} = props;
+	const {selectedLevel, updatePontuacao, updateFinalJogo, numPalavras, dimensao} = props;
 	/* const level = btLevel.selectedIndex;
 	let linhas;
 	let colunas;
@@ -53,46 +53,31 @@ function GamePanel (props) {
 		}
 		
 	}*/
-	const [pontuacao,setPontuacao]=useState(0);
+	
 	const [palavra, setPalavra] = useState("");
 	const arrayOfObjects = [ "DADOS", "REACT" ];
-
-	const [dimensao, setDimensao] = useState(10);
-	const [numPalavras, setnumPalavras] = useState(5);
+	const [palavrasCertas, setPalavrasCertas] = useState(1);
 
 	useEffect(()=>{
-
-		switch (selectedLevel) {
-			//level beginner
-			case '0':
-				setDimensao(10);
-				setnumPalavras(5);
-			    break;
-			//level Intermediate
-			case '1':
-				setDimensao(15);
-				setnumPalavras(7);
-			    break;
-			//level Advanced
-			case '2':
-				setDimensao(20);
-				setnumPalavras(10);
-			    break;
-			default:
-				setDimensao(10);
-				setnumPalavras(5);
-			    break;
-		  }
 		for(let node of document.querySelectorAll("td")) {
 			node.onclick = function () {
-				if(node.className === ""){
-					node.className = "selected";
+				if(node.className === "" || node.className === "certa"){
+					node.className = "selected"; 
 					setPalavra(palavra+node.textContent);
 					let total = arrayOfObjects.length;
 					for(var i = 0; i < total; i++){
 						if(palavra === arrayOfObjects[i]){
 							window.alert("ACERTOU!");
-							setPontuacao(pontuacao+1*minutes*60+seconds);
+							updatePontuacao(true);
+							setPalavrasCertas(palavrasCertas+1);
+							if(palavrasCertas === 2)
+								updateFinalJogo(true);
+							
+							setPalavra(palavra.replace(palavra, ""));
+							for(let nodeAux of document.querySelectorAll("td")) {
+								if(nodeAux.className === "selected")
+									nodeAux.className = "certa";
+							}
 						}
 					}
 				}
@@ -102,144 +87,150 @@ function GamePanel (props) {
 				}
 			}
 
-			if(node.textContent != "") 
+			if(node.textContent !== "") 
 				continue;
 			let charcode = Math.round(65 + Math.random() * 25)
 			node.textContent = String.fromCharCode(charcode)
 		}
 	});
 
+	
+
     return (
 		<div>
-		<table id="table">
-			<tr>
-			    <td id="letra"></td>
-                <td id="letra"></td>
-                <td id="letra">D</td>
-				<td id="letra"></td>
-				<td id="letra"></td>
-				<td id="letra"></td>
-				<td id="letra"></td>
-				<td id="letra"></td>
-				<td id="letra"></td>
-				<td id="letra"></td>
-			</tr>
+			<table id="table">
+				<tr>
+					<td id="letra"></td>
+					<td id="letra"></td>
+					<td id="letra">D</td>
+					<td id="letra"></td>
+					<td id="letra"></td>
+					<td id="letra"></td>
+					<td id="letra"></td>
+					<td id="letra"></td>
+					<td id="letra"></td>
+					<td id="letra"></td>
+				</tr>
 
-			<tr>
-				<td id="letra">R</td>
-				<td id="letra">E</td>
-				<td id="letra">A</td>
-				<td id="letra">C</td>
-				<td id="letra">T</td>
-				<td id="letra"></td>
-				<td id="letra"></td>
-				<td id="letra"></td>
-				<td id="letra"></td>
-				<td id="letra"></td>
-			</tr>
+				<tr>
+					<td id="letra">R</td>
+					<td id="letra">E</td>
+					<td id="letra">A</td>
+					<td id="letra">C</td>
+					<td id="letra">T</td>
+					<td id="letra"></td>
+					<td id="letra"></td>
+					<td id="letra"></td>
+					<td id="letra"></td>
+					<td id="letra"></td>
+				</tr>
 
-			<tr>
-				<td id="letra"></td>
-				<td id="letra"></td>
-				<td id="letra">D</td>
-				<td id="letra"></td>
-				<td id="letra"></td>
-				<td id="letra"></td>
-				<td id="letra"></td>
-				<td id="letra"></td>
-				<td id="letra"></td>
-				<td id="letra"></td>
-			</tr>
+				<tr>
+					<td id="letra"></td>
+					<td id="letra"></td>
+					<td id="letra">D</td>
+					<td id="letra"></td>
+					<td id="letra"></td>
+					<td id="letra"></td>
+					<td id="letra"></td>
+					<td id="letra"></td>
+					<td id="letra"></td>
+					<td id="letra"></td>
+				</tr>
 
-			<tr>
-				<td id="letra"></td>
-				<td id="letra"></td>
-				<td id="letra">O</td>
-				<td id="letra"></td>
-				<td id="letra"></td>
-				<td id="letra"></td>
-				<td id="letra"></td>
-				<td id="letra"></td>
-				<td id="letra"></td>
-				<td id="letra"></td>
-			</tr>
+				<tr>
+					<td id="letra"></td>
+					<td id="letra"></td>
+					<td id="letra">O</td>
+					<td id="letra"></td>
+					<td id="letra"></td>
+					<td id="letra"></td>
+					<td id="letra"></td>
+					<td id="letra"></td>
+					<td id="letra"></td>
+					<td id="letra"></td>
+				</tr>
 
-			<tr>
-				<td id="letra"></td>
-				<td id="letra"></td>
-				<td id="letra">S</td>
-				<td id="letra"></td>
-				<td id="letra"></td>
-				<td id="letra"></td>
-				<td id="letra"></td>
-				<td id="letra"></td>
-				<td id="letra"></td>
-				<td id="letra"></td>
-			</tr>
-			<tr>
-				<td id="letra"></td>
-				<td id="letra"></td>
-				<td id="letra"></td>
-				<td id="letra"></td>
-				<td id="letra"></td>
-				<td id="letra"></td>
-				<td id="letra"></td>
-				<td id="letra"></td>
-				<td id="letra"></td>
-				<td id="letra"></td>
-			</tr>
-			<tr>
-				<td id="letra"></td>
-				<td id="letra"></td>
-				<td id="letra"></td>
-				<td id="letra"></td>
-				<td id="letra"></td>
-				<td id="letra"></td>
-				<td id="letra"></td>
-				<td id="letra"></td>
-				<td id="letra"></td>
-				<td id="letra"></td>
-			</tr>
-			<tr>
-				<td id="letra"></td>
-				<td id="letra"></td>
-				<td id="letra"></td>
-				<td id="letra"></td>
-				<td id="letra"></td>
-				<td id="letra"></td>
-				<td id="letra"></td>
-				<td id="letra"></td>
-				<td id="letra"></td>
-				<td id="letra"></td>
-			</tr>
-			<tr>
-				<td id="letra"></td>
-				<td id="letra"></td>
-				<td id="letra"></td>
-				<td id="letra"></td>
-				<td id="letra"></td>
-				<td id="letra"></td>
-				<td id="letra"></td>
-				<td id="letra"></td>
-				<td id="letra"></td>
-				<td id="letra"></td>
-			</tr>
-			<tr>
-				<td id="letra"></td>
-				<td id="letra"></td>
-				<td id="letra"></td>
-				<td id="letra"></td>
-				<td id="letra"></td>
-				<td id="letra"></td>
-				<td id="letra"></td>
-				<td id="letra"></td>
-				<td id="letra"></td>
-				<td id="letra"></td>
-			</tr>
-		</table>
-        <div id="display">
-          <a>Pontuação: </a> <a>{pontuacao}</a>
-        </div>
+				<tr>
+					<td id="letra"></td>
+					<td id="letra"></td>
+					<td id="letra">S</td>
+					<td id="letra"></td>
+					<td id="letra"></td>
+					<td id="letra"></td>
+					<td id="letra"></td>
+					<td id="letra"></td>
+					<td id="letra"></td>
+					<td id="letra"></td>
+				</tr>
+				<tr>
+					<td id="letra"></td>
+					<td id="letra"></td>
+					<td id="letra"></td>
+					<td id="letra"></td>
+					<td id="letra"></td>
+					<td id="letra"></td>
+					<td id="letra"></td>
+					<td id="letra"></td>
+					<td id="letra"></td>
+					<td id="letra"></td>
+				</tr>
+				<tr>
+					<td id="letra"></td>
+					<td id="letra"></td>
+					<td id="letra"></td>
+					<td id="letra"></td>
+					<td id="letra"></td>
+					<td id="letra"></td>
+					<td id="letra"></td>
+					<td id="letra"></td>
+					<td id="letra"></td>
+					<td id="letra"></td>
+				</tr>
+				<tr>
+					<td id="letra"></td>
+					<td id="letra"></td>
+					<td id="letra"></td>
+					<td id="letra"></td>
+					<td id="letra"></td>
+					<td id="letra"></td>
+					<td id="letra"></td>
+					<td id="letra"></td>
+					<td id="letra"></td>
+					<td id="letra"></td>
+				</tr>
+				<tr>
+					<td id="letra"></td>
+					<td id="letra"></td>
+					<td id="letra"></td>
+					<td id="letra"></td>
+					<td id="letra"></td>
+					<td id="letra"></td>
+					<td id="letra"></td>
+					<td id="letra"></td>
+					<td id="letra"></td>
+					<td id="letra"></td>
+				</tr>
+				<tr>
+					<td id="letra"></td>
+					<td id="letra"></td>
+					<td id="letra"></td>
+					<td id="letra"></td>
+					<td id="letra"></td>
+					<td id="letra"></td>
+					<td id="letra"></td>
+					<td id="letra"></td>
+					<td id="letra"></td>
+					<td id="letra"></td>
+				</tr>
+			</table>
+			<div id="box_palavras">
+				<a>React</a>
+				<a>Dados</a>
+				<a>JavasScript</a>
+				<a>Dados</a>
+				<a>React</a>
+			</div>
 		</div>
 	)
 

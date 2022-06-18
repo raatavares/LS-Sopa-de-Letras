@@ -8,6 +8,12 @@
   border-radius: 20px;
 }
 
+#inputNome{
+  border: 1px solid blue;
+  border-radius: 5px;
+  box-shadow: 0px 0px 15px blue;
+}
+
 
 .title {
   font-family: Bevan;
@@ -29,7 +35,7 @@
   align-items: center;
   margin: 0 0 20px 0;
   padding: 20px;
-  width: 130%;
+  width: 10%;
   font-family: 'Times New Roman';
   font-size: 1rem;
   color: black;
