@@ -2,14 +2,13 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { useState } from "react";
 import { useEffect } from "react";
+import Footer from "./components/footer/footer.component"
 import Header from "./components/header/header.component"
 import ControlPanel from "./components/control-panel/control-panel.component"
 import GamePanel from "./components/game-panel/game-panel.component"
 import GameOverModal from "./components/game-over-modal/game-over-modal.component"
-import Display from "./components/display/display.component"
 import "./assets/styles/App.css";
 
-let timerId = undefined
 
 function App() {
   const [gameStarted, setGameStarted] = useState(false);
@@ -45,7 +44,6 @@ function App() {
     setIsModalOpen(true);
   }
 
-  const [dimensao, setDimensao] = useState(10);
 	const [numPalavras, setnumPalavras] = useState(5);
 
   
@@ -77,27 +75,23 @@ function App() {
       case '0':
         setMinutes(4);
         setMaxMinutes(4);
-        setDimensao(10);
         setnumPalavras(5);
         break;
       //level Intermediate
       case '1':
         setMinutes(5);
         setMaxMinutes(5);
-        setDimensao(15);
         setnumPalavras(7);
         break;
       //level Advanced
       case '2':
         setMinutes(6);
         setMaxMinutes(6);
-        setDimensao(20);
         setnumPalavras(10);
         break;
       default:
         setMinutes(10);
         setMaxMinutes(10);
-        setDimensao(10);
         setnumPalavras(5);
         break;
     }
@@ -156,7 +150,6 @@ function App() {
         updatePontuacao={updatePontuacao}
         updateFinalJogo={updateFinalJogo}
         numPalavras={numPalavras}
-        dimensao={dimensao}
       />
       )}
       <div id="display">

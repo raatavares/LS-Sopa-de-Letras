@@ -1,4 +1,4 @@
-import { useCallback, useState } from "react";
+import { useState } from "react";
 import { useEffect } from "react";
 import "./game-panel.css"
 import {randomLeter} from "./array-table.js"
@@ -7,7 +7,7 @@ const btLevel = document.querySelector('#btLevel');
 
 
 function GamePanel (props) {
-	const {selectedLevel, updatePontuacao, updateFinalJogo, numPalavras, dimensao} = props;
+	const {selectedLevel, updatePontuacao, updateFinalJogo, numPalavras} = props;
 	
 	const [palavra, setPalavra] = useState("");
 	const arrayOfObjects = [ "DADOS", "REACT", "JS", "SCRIPT", "CURSO", "TESTE", "AULA", "JAVA", "LETRAS", "INFORMATICA", "SOPA" ];
