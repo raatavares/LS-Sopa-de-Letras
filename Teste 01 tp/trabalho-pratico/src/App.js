@@ -8,6 +8,7 @@ import ControlPanel from "./components/control-panel/control-panel.component"
 import GamePanel from "./components/game-panel/game-panel.component"
 import GameOverModal from "./components/game-over-modal/game-over-modal.component"
 import "./assets/styles/App.css";
+import { getAllByText } from '@testing-library/react';
 
 
 function App() {
